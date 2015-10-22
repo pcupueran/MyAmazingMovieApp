@@ -1,4 +1,34 @@
 MyAmazingMovieApp::App.controllers :movies do
+  # enable :sessions
+
+  # before do
+  # # binding.pry
+  #   halt 401 unless session[:password]
+  #   # halt 401 unless params[:cool_beans]
+  # end
+  # post '/login' do
+  #   password = "cool_beans"
+  #   if params[:password] == password
+  #     session[:password] = true
+  #     redirect '/movies'
+  #   end
+  # end
+
+  #Create
+  get '/new' do
+    render 'movie/new_movie'
+  end
+
+  post '/create' do
+    Movie.create!(params[:movie])
+  end
+
+  #Read
+  get '/' do
+    session[:user] = "Patty"
+    @movies = Movie.all
+    render 'movie/list_movies'
+  end
 
   get '/:slug' do
     @movie = Movie.find_by(:slug => params[:slug])#model
@@ -8,24 +38,21 @@ MyAmazingMovieApp::App.controllers :movies do
       404
     end
   end
-  # get :index, :map => '/foo/bar' do
-  #   session[:foo] = 'bar'
-  #   render 'index'
-  # end
 
-  # get :sample, :map => '/sample/url', :provides => [:any, :js] do
-  #   case content_type
-  #     when :js then ...
-  #     else ...
-  # end
+  #Update
 
-  # get :foo, :with => :id do
-  #   'Maps to url '/foo/#{params[:id]}''
-  # end
+  get '/:movie_id/edit' do
+    render 'movie/edit'
+  end
 
-  # get '/example' do
-  #   'Hello world!'
-  # end
+  post '/:movie_id/update' do
+    Movie.update(params[:movie_id], params[:movie])
+  end
 
+  #Delete
+  post '/:movie_id/delete' do
+    @movie = Movie.find(params[:movie_id])
+    @movie.destroy
+  end
 
 end
