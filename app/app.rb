@@ -6,6 +6,27 @@ module MyAmazingMovieApp
 
     enable :sessions
 
+    before do
+      unless request.path == '/login' || session[:logged_in]
+        # || request.request_method == "POST" && request.path == '/login'
+        halt 401
+      end
+    end
+
+    get '/login' do
+      render '../login'
+    end
+
+    post '/login' do
+      password = "cool_beans"
+      if password == params[:password]
+        session[:logged_in] = true
+        redirect '/movies'
+      else
+        redirect '/login'
+      end
+    end
+
     ##
     # Caching support.
     #

@@ -20,7 +20,7 @@ MyAmazingMovieApp::App.controllers :movies do
   end
 
   post '/create' do
-    Movie.create!(title: params[:title])
+    @movie  = Movie.get_film_info(params[:title])
     redirect '/movies'
   end
 
