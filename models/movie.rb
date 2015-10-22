@@ -5,7 +5,7 @@ class Movie < ActiveRecord::Base
     imdb_data = HTTParty.get("http://www.omdbapi.com/?t=#{title}")
     m = Movie.new(title: imdb_data["Title"])
     m.year = imdb_data["Year"]
-    m.description = imdb_data["Description"]
+    m.description = imdb_data["Plot"]
     m.poster = imdb_data["Poster"]
     m.runtime = imdb_data["Runtime"]
     m.save!
