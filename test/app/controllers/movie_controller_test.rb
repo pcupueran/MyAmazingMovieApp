@@ -47,7 +47,7 @@ describe "Editing a movie GET to /movies/:id/edit" do
   it "should display a form for me to edit my movie" do
     assert last_response.ok?
     last_response.headers['Content-Type'].must_equal 'text/html;charset=utf-8'
-    last_response.body.must_match "<form>"
+    last_response.body.must_match "</form>"
   end
 end
 
@@ -70,7 +70,7 @@ describe "Creating a movie" do
       get "/movies/new"
 
       assert last_response.ok?
-       last_response.body.must_match "<form>"
+       last_response.body.must_match "</form>"
     end
   end
 

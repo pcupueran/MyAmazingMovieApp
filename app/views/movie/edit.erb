@@ -1,2 +1,10 @@
-<form></form>
+<form action="/movies/<%= @movie.id %>/update" method="post">
+  <label>Title</label>
+  <input name ="title"type="text" value="<%= @movie.title %>"/>
+  <label>Year</label>
+  <input name ="year"type="text" value="<%= @movie.year %>"/>
+  <label>Description</label>
+  <input name ="description"type="text" value="<%= @movie.description %>"/>
+  <input type="submit"/>
+</form>
 

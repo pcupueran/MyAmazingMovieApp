@@ -20,12 +20,13 @@ MyAmazingMovieApp::App.controllers :movies do
   end
 
   post '/create' do
-    Movie.create!(params[:movie])
+    Movie.create!(title: params[:title])
+    redirect '/movies'
   end
 
   #Read
   get '/' do
-    session[:user] = "Patty"
+    # session[:user] = "Patty"
     @movies = Movie.all
     render 'movie/list_movies'
   end
@@ -42,17 +43,26 @@ MyAmazingMovieApp::App.controllers :movies do
   #Update
 
   get '/:movie_id/edit' do
+    @movie = Movie.find(params[:movie_id])
     render 'movie/edit'
   end
 
   post '/:movie_id/update' do
-    Movie.update(params[:movie_id], params[:movie])
+    @movie_update = {:title => params[:title],
+      :year => params[:year],
+      :description => params[:description]
+    }
+    @movie = Movie.find(params[:movie_id])
+    @movie.update(@movie_update)
+
+    redirect "movies/#{@movie.slug}"
   end
 
   #Delete
   post '/:movie_id/delete' do
     @movie = Movie.find(params[:movie_id])
     @movie.destroy
+    redirect '/movies'
   end
 
 end
