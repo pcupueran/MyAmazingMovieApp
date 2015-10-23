@@ -19,7 +19,7 @@ MyAmazingMovieApp::App.controllers :movies do
     render 'movie/new_movie'
   end
 
-  post :create do
+  post :create, :map => '/movies' do
     @movie  = Movie.get_film_info(params[:title])
     redirect '/movies'
   end
@@ -42,24 +42,25 @@ MyAmazingMovieApp::App.controllers :movies do
 
   #Update
 
-  get :edit, :map => '/movies/movie_:id/edit' do
+  get :edit, :map => '/movies/:movie_id/edit' do
     @movie = Movie.find(params[:movie_id])
     render 'movie/edit'
   end
 
-  post :update, :with => :movie_id do
-    @movie_update = {:title => params[:title],
-      :year => params[:year],
-      :description => params[:description]
-    }
+  put :update, :map => '/movies/:movie_id' do
+    # @movie_update = {:title => params[:title],
+    #   :year => params[:year],
+    #   :description => params[:description]
+    # }
+    # params[:movie_id]
     @movie = Movie.find(params[:movie_id])
-    @movie.update(@movie_update)
+    @movie.update(params[:movie])
 
     redirect "movies/#{@movie.slug}"
   end
 
   #Delete
-  post :delete, :with => :movie_id do
+  delete :delete, :map => '/movies/:movie_id' do
     @movie = Movie.find(params[:movie_id])
     @movie.destroy
     redirect '/movies'
