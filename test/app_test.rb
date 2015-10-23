@@ -18,7 +18,7 @@ describe "App" do
 
     describe "POST to /login and submit the password to login" do
       it "does not authenticate if password is incorrect" do
-        post '/login', {password: "hello"}
+        post MyAmazingMovieApp::App.url_for(:login, :password => "hello")
 
         follow_redirect!
         last_request.path.must_equal '/login'

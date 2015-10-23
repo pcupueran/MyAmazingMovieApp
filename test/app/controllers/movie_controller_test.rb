@@ -55,6 +55,7 @@ describe "Submiting my changes POST to /movies/:id/update"do
   before do
     @movie = Movie.create!(:title => "Jaws")
     post "/movies/#{@movie.id}/update", {movie: {title: 'Jaws 2'}}
+    # post MyAmazingMovieApp::App.url_for(:movies, :update, movie_id: @movie.id), {movie: {title: 'Jaws 2'}}
   end
 
   it "should update the movie" do
