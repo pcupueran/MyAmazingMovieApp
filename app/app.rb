@@ -13,11 +13,11 @@ module MyAmazingMovieApp
       end
     end
 
-    get '/login' do
+    get :login do
       render '../login'
     end
 
-    post '/login' do
+    post :login do
       password = "cool_beans"
       if password == params[:password]
         session[:logged_in] = true

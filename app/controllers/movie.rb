@@ -15,23 +15,23 @@ MyAmazingMovieApp::App.controllers :movies do
   # end
 
   #Create
-  get '/new' do
+  get :new do
     render 'movie/new_movie'
   end
 
-  post '/create' do
+  post :create do
     @movie  = Movie.get_film_info(params[:title])
     redirect '/movies'
   end
 
   #Read
-  get '/' do
+  get :index do
     # session[:user] = "Patty"
     @movies = Movie.all
     render 'movie/list_movies'
   end
 
-  get '/:slug' do
+  get :show, :with => :slug do
     @movie = Movie.find_by(:slug => params[:slug])#model
     if @movie
       render 'movie/show'#view
@@ -42,12 +42,12 @@ MyAmazingMovieApp::App.controllers :movies do
 
   #Update
 
-  get '/:movie_id/edit' do
+  get :edit, :map => '/movies/movie_:id/edit' do
     @movie = Movie.find(params[:movie_id])
     render 'movie/edit'
   end
 
-  post '/:movie_id/update' do
+  post :update, :with => :movie_id do
     @movie_update = {:title => params[:title],
       :year => params[:year],
       :description => params[:description]
@@ -59,7 +59,7 @@ MyAmazingMovieApp::App.controllers :movies do
   end
 
   #Delete
-  post '/:movie_id/delete' do
+  post :delete, :with => :movie_id do
     @movie = Movie.find(params[:movie_id])
     @movie.destroy
     redirect '/movies'
