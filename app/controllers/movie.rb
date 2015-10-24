@@ -8,6 +8,7 @@ MyAmazingMovieApp::App.controllers :movies do
 
   post :create, :map => '/movies' do
     @movie  = Movie.get_film_info(params[:movie][:title])
+    flash[:message] = "#{@movie.title} has been created"
     redirect url_for(:movies, :index)
   end
 
@@ -36,12 +37,9 @@ MyAmazingMovieApp::App.controllers :movies do
   end
 
   put :update, :with => :movie_id  do
-    # @movie_update = {:title => params[:title],
-    #   :year => params[:year],
-    #   :description => params[:description]
-    # }
-    # params[:movie_id]
+
     @movie = Movie.find(params[:movie_id])
+    flash[:message] = "#{@movie.title} has been updated"
     @movie.update(params[:movie])
 
     redirect url_for(:movies, :show, :slug => @movie.slug)
@@ -51,6 +49,7 @@ MyAmazingMovieApp::App.controllers :movies do
   delete :delete, :map => '/movies/:movie_id' do
     @movie = Movie.find(params[:movie_id])
     @movie.destroy
+    flash[:message] = "#{@movie.title} has been deleted"
     redirect url_for(:movies, :index)
   end
 
