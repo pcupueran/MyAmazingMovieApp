@@ -8,8 +8,7 @@ module MyAmazingMovieApp
 
     before do
       unless request.path == '/login' || session[:logged_in]
-        # || request.request_method == "POST" && request.path == '/login'
-        halt 401
+        redirect url_for(:login)
       end
     end
 
@@ -21,9 +20,9 @@ module MyAmazingMovieApp
       password = "cool_beans"
       if password == params[:password]
         session[:logged_in] = true
-        redirect '/movies'
+        redirect url_for(:movies, :index)
       else
-        redirect '/login'
+        redirect url_for(:login)
       end
     end
 

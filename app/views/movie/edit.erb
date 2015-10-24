@@ -1,4 +1,4 @@
-<% form_for(@movie, url_for(:movies, :update, :movie_id => @movie.id)) do |f| %>
+<% form_for(@movie, url_for(:movies, :update, :movie_id => @movie.id), :method => :put) do |f| %>
 
   <%= f.label :title %>
   <%= f.text_field :title %>

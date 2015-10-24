@@ -35,7 +35,7 @@ MyAmazingMovieApp::App.controllers :movies do
     render 'movie/edit'
   end
 
-  post :update, :with => :movie_id  do
+  put :update, :with => :movie_id  do
     # @movie_update = {:title => params[:title],
     #   :year => params[:year],
     #   :description => params[:description]
@@ -48,7 +48,7 @@ MyAmazingMovieApp::App.controllers :movies do
   end
 
   #Delete
-  post :delete, :map => '/movies/:movie_id' do
+  delete :delete, :map => '/movies/:movie_id' do
     @movie = Movie.find(params[:movie_id])
     @movie.destroy
     redirect url_for(:movies, :index)

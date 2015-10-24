@@ -1,4 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../test_config.rb')
+require_relative '../../../app/app'
 
 describe "GET to /movies/jaws" do
   describe "with a movie in the db" do
@@ -55,7 +56,7 @@ describe "Submiting my changes POST to /movies/:id/update"do
   before do
     @movie = Movie.create!(:title => "Jaws")
     post "/movies/#{@movie.id}/update", {movie: {title: 'Jaws 2'}}
-    # post MyAmazingMovieApp::App.url_for(:movies, :update, movie_id: @movie.id), {movie: {title: 'Jaws 2'}}
+    # post MyAmazingMovieApp::App.url_for(:movies, :update, id: @movie.id), {movie: {title: 'Jaws 2'}}
   end
 
   it "should update the movie" do
