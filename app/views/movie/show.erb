@@ -1,10 +1,13 @@
+
 <h1><%= @movie.title %></h1>
 <p><%= @movie.year %></p>
 <p><%= @movie.description %></p>
 
-<a href="/movies/<%= @movie.id %>/edit">Edit</a>
+<%= link_to "Edit", url_for(:movies, :edit, :movie_id => @movie.id) %></br>
+<%= link_to "Back", url_for(:movies, :index) %>
 
-<form action="/movies/<%= @movie.id %>/delete" method="post">
-  <input type="submit" value="Delete"/>
-</form>
+
+<% form_for(@movie, url_for(:movies, :delete, :movie_id => @movie.id)) do |f| %>
+  <%= f.submit :delete %>
+<% end %>
 

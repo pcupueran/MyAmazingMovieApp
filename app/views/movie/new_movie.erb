@@ -1,5 +1,7 @@
-<form action="/movies/create" method="post">
-  <label>Title</label>
-  <input name ="title"type="text"/>
-  <input type="submit"/>
-</form>
+<% form_for(@movie, url_for(:movies, :create)) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.submit :create %>
+<% end %>
+
+<%= link_to "Back", url_for(:movies, :index) %>

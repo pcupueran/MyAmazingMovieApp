@@ -1,10 +1,14 @@
-<form action="/movies/<%= @movie.id %>/update" method="post">
-  <label>Title</label>
-  <input name ="title"type="text" value="<%= @movie.title %>"/>
-  <label>Year</label>
-  <input name ="year"type="text" value="<%= @movie.year %>"/>
-  <label>Description</label>
-  <input name ="description"type="text" value="<%= @movie.description %>"/>
-  <input type="submit"/>
-</form>
+<% form_for(@movie, url_for(:movies, :update, :movie_id => @movie.id)) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.label :year %>
+  <%= f.text_field :year %>
+  <%= f.submit :update %>
+<% end %>
+
+<%= link_to "Back", url_for(:movies, :show, :slug => @movie.slug) %>
 
