@@ -1,6 +1,6 @@
-<form action="/login" method="post">
-  <label>Password</label>
-  <input name ="password"type="password"/>
-  <input type="submit"/>
-</form>
+<% form_tag url_for(:login) do %>
+  <%= label_tag :password %>
+  <%= password_field_tag :password %>
+  <%= submit_tag :submit %>
+<% end %>
 

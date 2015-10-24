@@ -5,7 +5,7 @@
   <body>
     <ul>
       <% @movies.each do |movie| %>
-        <li><%= link_to "#{movie.title}", url_for(:movies, :show, :slug => movie.slug) %></li>
+        <li><%= link_to movie.title, url_for(:movies, :show, :slug => movie.slug) %></li>
       <% end %>
     </ul>
 

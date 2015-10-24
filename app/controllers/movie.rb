@@ -1,18 +1,4 @@
 MyAmazingMovieApp::App.controllers :movies do
-  # enable :sessions
-
-  # before do
-  # # binding.pry
-  #   halt 401 unless session[:password]
-  #   # halt 401 unless params[:cool_beans]
-  # end
-  # post '/login' do
-  #   password = "cool_beans"
-  #   if params[:password] == password
-  #     session[:password] = true
-  #     redirect '/movies'
-  #   end
-  # end
 
   #Create
   get :new do
