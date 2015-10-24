@@ -20,8 +20,10 @@ module MyAmazingMovieApp
       password = "cool_beans"
       if password == params[:password]
         session[:logged_in] = true
+        flash[:message] = "You have successfully logged in"
         redirect url_for(:movies, :index)
       else
+        flash[:message] = "Wrong password. Please try again!"
         redirect url_for(:login)
       end
     end
