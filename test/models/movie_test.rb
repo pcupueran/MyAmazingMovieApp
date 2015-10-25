@@ -17,9 +17,8 @@ describe "Movie Model" do
 
     it "has many actors through actor_movies" do
       @movie = Movie.get_film_info("Jaws")
-      @actors = Actor.get_actors_info("Jaws")
-      @actors.each {|actor| @movie.actors << actor}
 
+      # @movie.actors
       # @actors.each do |actor|
       #   @movie.actor_movies << ActorMovie.new(movie_id: @movie.id, actor_id: actor.id)
       # end
@@ -29,6 +28,8 @@ describe "Movie Model" do
     end
 
     it "has many directors through director_movies" do
+      @movie = Movie.get_film_info("Jaws")
+      @movie.directors.first.name.must_equal "Steven Spielberg"
     end
 
   end
