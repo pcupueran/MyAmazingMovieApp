@@ -4,6 +4,11 @@
 <p><%= @movie.description %></p>
 <img src="<%= @movie.poster %>"/>
 <p><%= @movie.runtime %></p>
+<ul>
+<% @movie.actors.each do |actor| %>
+  <li><%= actor.name %></li>
+<% end %>
+</ul>
 
 <%= link_to "Edit", url_for(:movies, :edit, :movie_id => @movie.id) %></br>
 <%= link_to "Back", url_for(:movies, :index) %>

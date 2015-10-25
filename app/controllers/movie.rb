@@ -8,6 +8,7 @@ MyAmazingMovieApp::App.controllers :movies do
 
   post :create, :map => '/movies' do
     @movie  = Movie.get_film_info(params[:movie][:title])
+
     flash[:message] = "#{@movie.title} has been created"
     redirect url_for(:movies, :index)
   end
@@ -21,7 +22,6 @@ MyAmazingMovieApp::App.controllers :movies do
 
   get :show, :with => :slug do
     @movie = Movie.find_by(:slug => params[:slug])#model
-    # binding.pry
     if @movie
       render 'movie/show'#view
     else
