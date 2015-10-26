@@ -1,12 +1,30 @@
-
 <h1><%= @movie.title %></h1>
 <p><%= @movie.year %></p>
 <p><%= @movie.description %></p>
 <img src="<%= @movie.poster %>"/>
 <p><%= @movie.runtime %></p>
+<h4>Actors</h4>
 <ul>
 <% @movie.actors.each do |actor| %>
   <li><%= actor.name %></li>
+<% end %>
+</ul>
+<h4>Directors</h4>
+<ul>
+<% @movie.directors.each do |director| %>
+  <li><%= director.name %></li>
+<% end %>
+</ul>
+<h4>Writers</h4>
+<ul>
+<% @movie.writers.each do |writer| %>
+  <li><%= writer.name %></li>
+<% end %>
+</ul>
+<h4>Genres</h4>
+<ul>
+<% @movie.genres.each do |genre| %>
+  <li><%= genre.name %></li>
 <% end %>
 </ul>
 
