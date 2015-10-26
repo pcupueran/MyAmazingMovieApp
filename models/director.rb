@@ -4,7 +4,7 @@ class Director < ActiveRecord::Base
     @directors = []
     directors_names = directors_string.split(",").map {|a| a.strip.chomp}
     directors_names.each do |name|
-      @directors << Director.create!(:name => name)
+      @directors << Director.find_or_create_by!(:name => name)
     end
     @directors
   end
