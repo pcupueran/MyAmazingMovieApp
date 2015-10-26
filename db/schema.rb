@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 7) do
+ActiveRecord::Schema.define(version: 11) do
 
   create_table "actor_movies", force: :cascade do |t|
     t.integer  "actor_id"
@@ -37,6 +37,19 @@ ActiveRecord::Schema.define(version: 7) do
     t.datetime "updated_at"
   end
 
+  create_table "genre_movies", force: :cascade do |t|
+    t.integer  "movie_id"
+    t.integer  "genre_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "movies", force: :cascade do |t|
     t.string   "title"
     t.integer  "year"
@@ -46,6 +59,19 @@ ActiveRecord::Schema.define(version: 7) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+  end
+
+  create_table "writer_movies", force: :cascade do |t|
+    t.integer  "movie_id"
+    t.integer  "writer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "writers", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
