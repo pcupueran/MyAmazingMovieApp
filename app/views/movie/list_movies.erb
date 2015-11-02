@@ -1,15 +1,8 @@
-<html>
-  <head>
-    <title> </title>
-  </head>
-  <body>
-    <ul>
-      <% @movies.each do |movie| %>
-        <li><%= link_to movie.title, url_for(:movies, :show, :slug => movie.slug) %></li>
-      <% end %>
-    </ul>
+<ul>
+  <% @movies.each do |movie| %>
+    <li><%= link_to movie.title, url_for(:movies, :show, :slug => movie.slug) %></li>
+  <% end %>
+</ul>
 
-    <%= link_to "New", url_for(:movies, :new) %>
+<%= link_to "New", url_for(:movies, :new) %>
 
-  </body>
-</html>

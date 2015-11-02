@@ -3,7 +3,7 @@ MyAmazingMovieApp::App.controllers :movies do
   #Create
   get :new do
     @movie = Movie.new
-    render 'movie/new_movie'
+    render 'movie/new_movie.haml'
   end
 
   post :create, :map => '/movies' do
@@ -17,13 +17,13 @@ MyAmazingMovieApp::App.controllers :movies do
   get :index do
     # session[:user] = "Patty"
     @movies = Movie.all
-    render 'movie/list_movies'
+    render 'movie/list_movies.haml'
   end
 
   get :show, :with => :slug do
     @movie = Movie.find_by(:slug => params[:slug])#model
     if @movie
-      render 'movie/show'#view
+      render 'movie/show.haml'#view
     else
       404
     end
@@ -33,7 +33,7 @@ MyAmazingMovieApp::App.controllers :movies do
 
   get :edit, :map => '/movies/:movie_id/edit' do
     @movie = Movie.find(params[:movie_id])
-    render 'movie/edit'
+    render 'movie/edit.haml'
   end
 
   put :update, :with => :movie_id  do

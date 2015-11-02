@@ -1,0 +1,6 @@
+= form_for @movie, url_for(:movies, :create) do |f|
+  = f.label :title
+  = f.text_field :title
+  = f.submit :create
+
+= link_to "Back", url_for(:movies, :index)

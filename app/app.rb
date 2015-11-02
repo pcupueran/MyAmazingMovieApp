@@ -13,7 +13,7 @@ module MyAmazingMovieApp
     end
 
     get :login do
-      render '../login'
+      render '../login.haml'
     end
 
     post :login do

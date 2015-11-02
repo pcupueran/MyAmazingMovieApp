@@ -1,0 +1,16 @@
+= form_for @movie, url_for(:movies, :update, :movie_id => @movie.id), :method => :put do |f|
+  = f.label :title
+  = f.text_field :title
+
+  = f.label :year
+  = f.text_field :year
+
+  = f.label :description
+  = f.text_field :description
+
+  = f.label :runtime
+  =f.text_field :runtime
+
+  = f.submit :update
+
+= link_to "Back", url_for(:movies, :show, :slug => @movie.slug)

@@ -1,0 +1,36 @@
+.movie-cover
+  %img{:src => @movie.poster}
+
+.movie_details
+  %h1= @movie.title
+  %span= @movie.year
+  %p= @movie.description
+
+  %p= @movie.runtime
+
+  %h4= "Actors"
+  %ul
+    - @movie.actors.each do |actor|
+      %li= actor.name
+
+  %h4= "Directors"
+  %ul
+    - @movie.directors.each do |director|
+      %li= director.name
+
+  %h4= "Writers"
+  %ul
+    - @movie.writers.each do |writer|
+      %li= writer.name
+
+  %h4= "Genres"
+  %ul
+    - @movie.genres.each do |genre|
+      %li= genre.name
+  .nav-options
+    = link_to "Edit", url_for(:movies, :edit, :movie_id => @movie.id)
+    = link_to "Back", url_for(:movies, :index)
+
+    = form_for @movie, url_for(:movies, :delete, :movie_id => @movie.id),
+      :method => :delete do |f|
+      = f.submit :delete

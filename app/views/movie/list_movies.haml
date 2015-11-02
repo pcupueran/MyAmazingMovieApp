@@ -1,0 +1,5 @@
+%ul.movies
+  - @movies.each do |movie|
+    %li=link_to movie.title, url_for(:movies, :show, :slug => movie.slug)
+
+=link_to "New", url_for(:movies, :new)
