@@ -1,0 +1,68 @@
+$leading_link = 0.5em 1em;
+$leading = 0.5em 1em;
+a {
+  padding: $leading_link;
+  color: black;
+  &:hover{
+    color: #618BB5;
+    text-decoration: none;
+  }
+}
+
+h1 {
+  font:{
+    size: 36px;
+    family: cursive;
+  };
+
+  width: 13em;
+  margin: 1em auto;
+}
+
+.navbar-inverse {
+  background-color: #8AB8E6;
+}
+
+
+span {
+  margin: $leading;
+}
+
+.movie-cover, .movie_details, form {
+  display: inline-block;
+}
+
+img{
+  position: relative;
+  top: -25em;
+  width: 18em;
+  margin: 2em;
+}
+p {
+  width: 30em;
+  margin: $leading;
+  padding: 1em 0em;
+}
+
+h4 {
+  font-size: 18px;
+  margin: $leading;
+}
+
+ul {
+  margin-top: 0;
+  margin-bottom: 10px;
+  margin: $leading;
+}
+.nav-options {
+  width: 20em;
+  margin: 2em auto;
+}
+
+input[type="submit"] {
+  padding: $leading_link;
+  border: 0.1em solid black;
+  border-radius: 0.3em;
+  box-shadow: 0.1em 0.1em 0.1em
+}
+

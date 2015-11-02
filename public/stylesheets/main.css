@@ -1,4 +1,64 @@
 .navbar-inverse {
   background-color: #8AB8E6;
-  border: ;
+}
+
+h1 {
+  font-size: 36px;
+  width: 13em;
+  margin: 1em auto;
+}
+
+span {
+  margin: 0.5em 3em;
+}
+
+.movie-cover, .movie_details {
+  display: inline-block;
+}
+
+img{
+  position: relative;
+  top: -25em;
+  width: 18em;
+  margin: 2em;
+}
+
+p {
+  margin: 0.5em 3em;
+  width: 30em;
+  margin: 0.5em 3em;
+  padding: 1em 0em;
+}
+
+h4 {
+  font-size: 18px;
+  margin: 0.5em 3em;
+}
+
+ul {
+  margin-top: 0;
+  margin-bottom: 10px;
+  margin: 0.5em 3em;
+}
+.nav-options {
+  width: 20em;
+  margin: 2em auto;
+}
+ a:hover {
+  color: #618BB5;
+  text-decoration: none;
+}
+a {
+  padding: 0.5em 1em;
+  color: black;
+}
+
+input[type="submit"] {
+  padding: 0.5em 1em;
+  border: 0.1em solid black;
+  border-radius: 0.3em;
+  box-shadow: 0.1em 0.1em 0.1 em
+}
+form {
+  display: inline-block;
 }
