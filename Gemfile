@@ -21,6 +21,8 @@ gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'sqlite3'
 gem 'httparty'
 gem 'pry'
+gem 'haml'
+gem 'sass'
 
 # Test requirements
 gem 'minitest', :require => 'minitest/autorun', :group => 'test'
