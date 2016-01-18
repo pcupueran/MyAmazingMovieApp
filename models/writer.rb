@@ -1,5 +1,6 @@
 class Writer < ActiveRecord::Base
   belongs_to :writer_movies
+
   def self.get_writers_info(writers_string)
     @writers = []
     writers_names = writers_string.split(",").map {|a| a.strip.chomp}
